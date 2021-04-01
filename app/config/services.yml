@@ -21,3 +21,8 @@ services:
     # AppBundle\EventListener\TestListener:
     #     tags:
     #         - { name: kernel.event_listener, event: pimcore.dataobject.preUpdate, method: onObjectPreUpdate }
+    
+    AppBundle\EventListener\DateListener: #name of the file
+        tags:
+            - { name: kernel.event_listener, event: pimcore.dataobject.preUpdate, method: DateException } #after post 
+            
