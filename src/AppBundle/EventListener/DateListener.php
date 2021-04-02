@@ -3,6 +3,7 @@
     
     use Pimcore\Event\Model\DataObjectEvent;
     use Pimcore\Model\DataObject\Product;
+    use Pimcore\Model\Element\ValidationException;
 
     class DateListener {
 
