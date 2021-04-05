@@ -21,7 +21,8 @@
                 $prod = $e->getObject();
                 if($prod->getLaunchDate() <  date("Y-m-d") ) {
                     throw new \Pimcore\Model\Element\ValidationException("Product has been expired");
-                    #throw new \Pimcore\Model\Element\ValidationException("Product has been expired");
+                    
+                    
                     
                 }
             }
