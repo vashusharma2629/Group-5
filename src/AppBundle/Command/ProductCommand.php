@@ -153,7 +153,39 @@ class ProductCommand extends AbstractCommand
                         }
                     $object->save();
 
+                    if(($prod->key)==NULL || ($prod->name)==NULL)
+                    {
+                     $msg ="key or Name is given NULL.\n";
+                    }
+                    else
+                   
+                    $msg ="Data Imported Successfully.\n";
+                    $count++;
+                    $logMsg=new \Pimcore\Model\DataObject\Log();        
+                    $logMsg->setKey("$prod->key");
+                    $logMsg->setPublished(true);
+                    $logMsg->setParentId(30);
+                    $logMsg->setMessage($msg);
+                    $logMsg->save();
+
+                    $log=new \Pimcore\Model\DataObject\Import\Listing();
+                    foreach($log as $prod)
+                    {                    
+                     //   $prod->setLog($msg);
+                        $prod->setStatus(true);
+                        $prod->save();
+                    }
+
                     $msg = "Data Imported Successfully.\n";
+
+                    $mail = new \Pimcore\Mail();
+                    $mail->addTo('vashusharma1104@gmail.com');
+                    $mail->setSubject('New Arrival');
+                    $mail->setDocument('/importEmail');
+                    // $mail->setParams($params);
+                    $mail->send();
+
+
                    
                  
                 }

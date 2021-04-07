@@ -13,7 +13,7 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 use Pimcore\Model\DataObject\Product;
 use Pimcore\Model\DataObject\Category;
 use Pimcore\Model\Asset\MetaData\ClassDefinition\Data\Asset;
-//use Pimcore\Model\DataObject\Brand;
+use Pimcore\Model\DataObject\Brand;
 use Pimcore\Model\DataObject\Objectbrick\Data\AcFeatures;
 use Pimcore\Model\DataObject\Product\SpecificFeatures;
 
@@ -129,7 +129,7 @@ use Pimcore\Model\DataObject\Product\SpecificFeatures;
                'Qunatity'     => $pro->getQuantityInStock(),
                'color'        => $pro->getColour()->getHex(),
                'weight'       => $pro->getWeight()->__toString(),
-               'image'        => $pro->getImage()->getRelativeFileSystemPath(),
+              // 'image'        => $pro->getImage()->getRelativeFileSystemPath(),
                'ratings'      => $pro->getRatings(),
                'voltage'      => $pro->getVoltage()->__toString(),
                'wattage'      => $pro->getWattage()->__toString(),
