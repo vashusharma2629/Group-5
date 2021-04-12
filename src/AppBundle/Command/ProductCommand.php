@@ -72,7 +72,7 @@ class ProductCommand extends AbstractCommand
        
 
                 if ($prod->key != NULL) {
-                   
+                 try{ 
                     $object = new Pimcore\Model\DataObject\Product();
                     $object->setKey($prod->key);
                     $object->setParentId(4);
@@ -152,14 +152,115 @@ class ProductCommand extends AbstractCommand
                             $object->setCategory($cat);
                         }
                     $object->save();
+                 
 
-                    if(($prod->key)==NULL || ($prod->name)==NULL)
+                    if(($prod->key)==NULL )
                     {
-                     $msg ="key or Name is given NULL.\n";
+                     $msg ="key  is given NULL.\n";
+                     $this->dump('key is given null');
+                    }
+                    elseif(($prod->name)==NULL )
+                    {
+                        $msg =" Name is given NULL.\n";
+                     $this->dump('Issue in Import');
+                    }
+                    elseif(($prod->price)==NULL )
+                    {
+                        $msg ="price is given NULL.\n";
+                     $this->dump('Issue in import');
+                    }
+                    elseif(($prod->modelNo)==NULL )
+                    {
+                        $msg ="modelNo is given NULL.\n";
+                     $this->dump('Issue in import');
+                    }
+                    elseif(($prod->description)==NULL )
+                    {
+                        $msg ="description is given NULL.\n";
+                     $this->dump('Issue in import');
+                    }
+                    elseif(($prod->quantityInStock)==NULL )
+                    {
+                        $msg ="quantityInStock is given NULL.\n";
+                     $this->dump('Issue in import');
+                    }
+                    elseif(($prod->voltage)==NULL )
+                    {
+                        $msg ="Voltage is given NULL.\n";
+                     $this->dump('Issue in import');
+                    }
+                    elseif(($prod->wattage)==NULL )
+                    {
+                        $msg ="Wattage is given NULL.\n";
+                     $this->dump('Issue in importy');
+                    }
+                    elseif(($prod->weight)==NULL )
+                    {
+                        $msg ="WEight is given NULL.\n";
+                     $this->dump('Issue in import');
                     }
                     else
+                    $this->dump('Data import Successfully!');
+                }
+                catch (\Exception $e)
+                {
+                    if(($prod->key)==NULL )
+                    {
+                     $msg ="key  is given NULL.\n";
+                     $this->dump('key is given null');
+                    }
+                    elseif(($prod->name)==NULL )
+                    {
+                        $msg =" Name is given NULL.\n";
+                     $this->dump('Issue in Import');
+                    }
+                    elseif(($prod->price)==NULL )
+                    {
+                        $msg ="price is given NULL.\n";
+                     $this->dump('Issue in import');
+                    }
+                    elseif(($prod->modelNo)==NULL )
+                    {
+                        $msg ="modelNo is given NULL.\n";
+                     $this->dump('Issue in import');
+                    }
+                    elseif(($prod->description)==NULL )
+                    {
+                        $msg ="description is given NULL.\n";
+                     $this->dump('Issue in import');
+                    }
+                    elseif(($prod->quantityInStock)==NULL )
+                    {
+                        $msg ="quantityInStock is given NULL.\n";
+                     $this->dump('Issue in import');
+                    }
+                    elseif(($prod->voltage)==NULL )
+                    {
+                        $msg ="Voltage is given NULL.\n";
+                     $this->dump('Issue in import');
+                    }
+                    elseif(($prod->wattage)==NULL )
+                    {
+                        $msg ="Wattage is given NULL.\n";
+                     $this->dump('Issue in importy');
+                    }
+                    elseif(($prod->weight)==NULL )
+                    {
+                        $msg ="WEight is given NULL.\n";
+                     $this->dump('Issue in import');
+                    }
+                    $this->dump('exception blocked');
+                    $logMsg=new \Pimcore\Model\DataObject\Log();        
+                    $logMsg->setKey("$prod->key");
+                    $logMsg->setPublished(true);
+                    $logMsg->setParentId(30);
+                    $logMsg->setMessage($msg);
+                    $logMsg->save();
+                    continue;
+                }
+                $msg ="sucessfully"; 
                    
-                    $msg ="Data Imported Successfully.\n";
+                   
                     $count++;
                     $logMsg=new \Pimcore\Model\DataObject\Log();        
                     $logMsg->setKey("$prod->key");
@@ -178,12 +279,12 @@ class ProductCommand extends AbstractCommand
 
                     $msg = "Data Imported Successfully.\n";
 
-                    // $mail = new \Pimcore\Mail();
+                    $mail = new \Pimcore\Mail();
                     // $mail->addTo('vashusharma1104@gmail.com');
                     // $mail->setSubject('New Arrival');
-                    // $mail->setDocument('/importEmail');
+                    $mail->setDocument('/importEmail');
                     // // $mail->setParams($params);
-                    // $mail->send();
+                    $mail->send();
 
 
                    
@@ -191,7 +292,7 @@ class ProductCommand extends AbstractCommand
                 }
 
 
-                $this->dump('Data Imported Successfully');
-            }
+              
         }
     }
+}

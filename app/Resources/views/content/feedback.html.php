@@ -1,110 +1,129 @@
-
- <html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>Group One</title>
-    <link rel="stylesheet" type="text/css" href="/static/css/global.css" />
-    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
-    
+
 <style>
-
-.container {
-  border-radius: 5px;
-  padding: 20px;
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Poppins', sans-serif;
 }
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  
-	
-	background: #009999;
-	
-  border-radius: 10px;
+body:before {
+	content: '';
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('background/el.jpg');
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	-webkit-background-size: cover;
+	background-size: cover;
+
+}
+.contact-form {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 400px;
+	height: 400px;
+	padding: 90px 40px;
+	background: rgba(0, 0, 0, 0.5);
+}
+.avatar {
+	position: absolute;
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	overflow: hidden;
+	top: calc(-80px/2);
+	left: 190px;
+}
+.contact-form h2 {
+	margin: 0;
+	padding: 0 0 20px;
+	color: #fff;
+	text-align: center;
+	text-transform: uppercase;
+}
+.contact-form p {
+	margin: 0;
+	padding: 0;
+	font-weight: bold;
+	color: #fff;
+}
+.contact-form input {
+	width: 100%;
+	margin-bottom: 20px;
+}
+.contact-form input[type=email] {
+	border: none;
+	border-bottom: 1px solid #fff;
+	background: transparent;
+	outline: none;
+	height: 40px;
+	color: #fff;
+	font-size: 16px;
+}
+.contact-form input[type=submit] {
+	height: 30px;
+	color: #fff;
+	font-size: 15px;
+	background: red;
+	cursor: pointer;
+	border-radius: 25px;
+	border: none;
+	outline: none;
+	margin-top: 15%;
+}
+.contact-form a {
+	color: #fff;
+	font-size: 14px;
+	font-weight: bold;
+	text-decoration: none;
 }
 
 
-
-li {
-  float: left;
-}
-
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-li a:hover {
-  background-color: #471f16;
-}
 </style>
+
+<meta charset="UTF-8">
+	<title>feedback</title>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+	<link href="style.css" rel="stylesheet">
 </head>
-<nav class="navbar navbar-expand-lg py-3 navbar-dark bg-dark shadow-sm">
-  <div class="container">
-    <a href="#" class="navbar-brand">
-      <!-- Logo Image -->
-      <img src="https://res.cloudinary.com/mhmd/image/upload/v1557368579/logo_iqjuay.png" width="45" alt="" class="d-inline-block align-middle mr-2">
-      <!-- Logo Text -->
-      <span class="text-uppercase font-weight-bold">Apparels</span>&nbsp;
-      <!-- <input type="text" id="myInput" onkeyup="mysearch()" placeholder="Search Here"> -->
-    </a>
 
-    <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
-
-    <div id="navbarSupportedContent" class="collapse navbar-collapse">
-      <ul>
-        <!-- <li class="nav-item active"><a href="http://groupOne.local/homePage" class="nav-link">Home <span class="sr-only">(current)</span></a></li> -->
-        <li class="nav-item"><a href="http://groupOne.local/home" class="nav-link">Home</a></li>
-        <li class="nav-item">
-          <a href="http://groupOne.local/productPage" class="nav-link">Clothes</a>
-          
-        </li>
-        
-        <li class="nav-item"><a href="http://groupOne.local/feedbackForm" class="nav-link">Feedback</a></li>
-        
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-<div class="container"><br>
-		<h1 class="text-success text-center"> FeedBack Form</h1><br>
-		<div class="col-lg-8 m-auto d-block">
+<body>
+	<div class="contact-form">
+		<img alt="" class="avatar" src="https://i.postimg.cc/zDyt7KCv/a1.jpg">
+		<h2>Feedback Form</h2>
 			<form action="#" onsubmit="return validation()" method = "post">
 
-				<div class="form-group">
-					<label> Firstname: </label>
-					<input type="text" name="firstname" class="form-control" id="user" autocomplete="off">
+					
+				<p>First name</p>	<input type="text" name="firstname" class="form-control" id="user" autocomplete="off">
 					<span id="username" class="text-danger font-weight-bold"></span>
-				</div>
+				
 
-        <div class="form-group">
-					<label> Lastname: </label>
-					<input type="text" name="lastname" class="form-control" id="user" autocomplete="off">
+        
+				<p>	Last name</p><input type="text" name="lastname" class="form-control" id="user" autocomplete="off">
 					<span id="username" class="text-danger font-weight-bold"></span>
-				</div>
+				
 
-				<div class="form-group">
-					<label> Email: </label>
-					<input type="text" name="email" class="form-control" id="emails" autocomplete="off">
+			
+				<p>Email</p>	<input type="text" name="email" class="form-control" id="emails" autocomplete="off">
 					<span id="emailids" class="text-danger font-weight-bold"></span>
-				</div>
+				
 
-        <div class="form-group">
-					<label> Review: </label>
-					<input type="text" name="comment" class="form-control" id="user" autocomplete="off">
+        
+				<p>Review	</p><input type="text" name="comment" class="form-control" id="user" autocomplete="off">
 					<span id="username" class="text-danger font-weight-bold"></span>
-				</div>
+			
 				<input type="submit" name="submit" value="submit" class="btn btn-success">
 				
 			</form>
-		</div>
-		
 	</div>
+		
+	</body>
 
     
         <?php
@@ -139,8 +158,8 @@ li a:hover {
 
 
                 $mail = new \Pimcore\Mail();
-                $mail->addTo('vashusharma1104@gmail.com');
-                $mail->setSubject('Products Feedback');
+                // $mail->addTo('oprachi2@gmail.com');
+                // $mail->setSubject('Products Feedback');
                 $mail->setDocument('/feedbackMail');
                 // $mail->setParams($params);
                 $mail->send();

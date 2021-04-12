@@ -69,6 +69,7 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'defaultUnit' => NULL,
              'validUnits' => 
             array (
+              0 => 'Tonn',
             ),
              'decimalPrecision' => NULL,
              'autoConvert' => false,

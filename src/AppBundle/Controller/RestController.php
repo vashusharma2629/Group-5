@@ -42,6 +42,9 @@ use Pimcore\Model\DataObject\Product\SpecificFeatures;
         $product->getObjects();
         foreach ($product as $pro)
         {
+          // echo(($pro->getCategory()->getName()));
+          //  echo  ($pro->getName());
+          //  echo "/n";
             $data[] = $this->getProduct($pro);
             
         }
@@ -76,7 +79,7 @@ use Pimcore\Model\DataObject\Product\SpecificFeatures;
         
         if($brand) {
                    if($lowerprice) {
-                                if((strcasecmp($brand , $pro->getBrand()) == 0) && ($lowerprice < ($pro->getPrice()))) 
+                    if((strcasecmp($brand , $pro->getBrand()) == 0) && abs(preg_filter('/[,Rs]+/', '', $lowerprice)) < abs(preg_filter('/[,Rs]+/','',($pro->getPrice()->__toString()))) ) 
                                    {
                                     $data[] = $this->getProduct($pro);
                                    }
@@ -94,8 +97,8 @@ use Pimcore\Model\DataObject\Product\SpecificFeatures;
                   }
               
               
-         elseif($price) {
-                  if($lowerprice < ($pro->getPrice()))
+         elseif($lowerprice) {
+          if( abs(preg_filter('/[,Rs]+/', '', $lowerprice)) < abs(preg_filter('/[,Rs]+/','',($pro->getPrice()->__toString()))))
                             {
                                 $data[] = $this->getProduct($pro);
                             }
@@ -117,9 +120,14 @@ use Pimcore\Model\DataObject\Product\SpecificFeatures;
      
       
       }
-      
       function getProduct(Product $pro)
-      {  return [
+      {  
+          
+       if(($pro->getCategory()->getName())== "AC")
+       {
+           
+      
+      return [
       
                'Brand'        => $pro->getBrand(), 
                'productName'  => $pro->getName(),
@@ -129,16 +137,95 @@ use Pimcore\Model\DataObject\Product\SpecificFeatures;
                'Qunatity'     => $pro->getQuantityInStock(),
                'color'        => $pro->getColour()->getHex(),
                'weight'       => $pro->getWeight()->__toString(),
-              // 'image'        => $pro->getImage()->getRelativeFileSystemPath(),
+               'image'        => $pro->getImage()->getRelativeFileSystemPath(),
                'ratings'      => $pro->getRatings(),
                'voltage'      => $pro->getVoltage()->__toString(),
                'wattage'      => $pro->getWattage()->__toString(),
-               'specific'     => $pro->getSpecificFeatures (),
-             'launch_Date'  => $pro->getLaunchDate()->toDateString(),
+               'capacity'     => $pro->getSpecificFeatures()->getAcFeatures()->getCapacity()->__toString(),
+               'installation_type'     => $pro->getSpecificFeatures()->getAcFeatures()->getInstallationType(),
+               'launch_Date'  => $pro->getLaunchDate()->toDateString(),
       
       ];
+      }
+      
+      elseif(($pro->getCategory()->getName())== "geyser")
+      {
+      return [
+      
+               'Brand'        => $pro->getBrand(), 
+               'productName'  => $pro->getName(),
+               'Model_Number' => $pro->getModelNo(),
+               'price'        => $pro->getPrice()->__toString(),
+               'category'     => $pro->getCategory()->getName(),
+               'Qunatity'     => $pro->getQuantityInStock(),
+               'color'        => $pro->getColour()->getHex(),
+               'weight'       => $pro->getWeight()->__toString(),
+               'image'        => $pro->getImage()->getRelativeFileSystemPath(),
+               'ratings'      => $pro->getRatings(),
+               'voltage'      => $pro->getVoltage()->__toString(),
+               'wattage'      => $pro->getWattage()->__toString(),
+               'capacity'     => $pro->getSpecificFeatures()->getGeyserFeatures()->getCapacity()->__toString(),
+            
+               'launch_Date'  => $pro->getLaunchDate()->toDateString(),
+             ];
       
       }
+       
+       
+       
+       
+      elseif(($pro->getCategory()->getName())== "Fan")
+      {
+      return [
+      
+               'Brand'        => $pro->getBrand(), 
+               'productName'  => $pro->getName(),
+               'Model_Number' => $pro->getModelNo(),
+               'price'        => $pro->getPrice()->__toString(),
+               'category'     => $pro->getCategory()->getName(),
+               'Qunatity'     => $pro->getQuantityInStock(),
+               'color'        => $pro->getColour()->getHex(),
+               'weight'       => $pro->getWeight()->__toString(),
+               'image'        => $pro->getImage()->getRelativeFileSystemPath(),
+               'ratings'      => $pro->getRatings(),
+               'voltage'      => $pro->getVoltage()->__toString(),
+               'wattage'      => $pro->getWattage()->__toString(),
+               'capacity'     => $pro->getSpecificFeatures()->getFanFeatures()->getSpeed()->__toString(),
+               'installation_type'     => $pro->getSpecificFeatures()->getFanFeatures()->getBlades(),
+               'launch_Date'  => $pro->getLaunchDate()->toDateString(),
+             ];
+      
+      }
+      
+      
+      
+      
+      else
+      {
+       return [
+      
+               'Brand'        => $pro->getBrand(), 
+               'productName'  => $pro->getName(),
+               'Model_Number' => $pro->getModelNo(),
+               'price'        => $pro->getPrice()->__toString(),
+               'category'     => $pro->getCategory()->getName(),
+               'Qunatity'     => $pro->getQuantityInStock(),
+               'color'        => $pro->getColour()->getHex(),
+               'weight'       => $pro->getWeight()->__toString(),
+               'image'        => $pro->getImage()->getRelativeFileSystemPath(),
+               'ratings'      => $pro->getRatings(),
+               'voltage'      => $pro->getVoltage()->__toString(),
+               'wattage'      => $pro->getWattage()->__toString(),
+               'capacity'     => $pro->getSpecificFeatures()->getRefrigeratorFeatures()->getCapacity()->__toString(),
+               'installation_type'     => $pro->getSpecificFeatures()->getRefrigeratorFeatures()->getDoorStyle(),
+               'launch_Date'  => $pro->getLaunchDate()->toDateString(),
+             ];
+      
+      }
+      
+      
+     }
+     
     
     }
     

@@ -17,7 +17,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'import',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1617643206,
+   'modificationDate' => 1618068847,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -77,10 +77,15 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
             array (
               0 => 
               array (
+                'key' => 'Brand',
+                'value' => 'Brand',
+              ),
+              1 => 
+              array (
                 'key' => 'Category',
                 'value' => 'Category',
               ),
-              1 => 
+              2 => 
               array (
                 'key' => 'Product',
                 'value' => 'Product',
@@ -101,7 +106,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
@@ -146,7 +151,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
@@ -167,7 +172,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',

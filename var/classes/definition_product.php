@@ -29,7 +29,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'product',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1617646134,
+   'modificationDate' => 1618131773,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -96,6 +96,36 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
               array (
                 'key' => 'Samsung',
                 'value' => 'Samsung',
+              ),
+              2 => 
+              array (
+                'key' => 'havells',
+                'value' => 'havells',
+              ),
+              3 => 
+              array (
+                'key' => 'Whirlpool',
+                'value' => 'Whirlpool',
+              ),
+              4 => 
+              array (
+                'key' => 'Panasonic',
+                'value' => 'Panasonic',
+              ),
+              5 => 
+              array (
+                'key' => 'Bajaj',
+                'value' => 'Bajaj',
+              ),
+              6 => 
+              array (
+                'key' => 'samsung',
+                'value' => 'samsung',
+              ),
+              7 => 
+              array (
+                'key' => 'IBM',
+                'value' => 'IBM',
               ),
             ),
              'width' => '',
@@ -166,7 +196,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'name' => 'name',
              'title' => 'Name',
              'tooltip' => '',
-             'mandatory' => false,
+             'mandatory' => true,
              'noteditable' => false,
              'index' => false,
              'locked' => false,
@@ -196,7 +226,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
